@@ -1,11 +1,16 @@
-protected virtual void FE_edtK122_dtK122_LimitDate_OnEnter(FrameworkEventArgs e)
+public override void SetParam(IcdWOMaster oWOMasterP)
 {
-	int a = this.oWOMaster.oK122_Article.shtK122_Lagergrenzwert.Value;
-	DateTime dDate = System.DateTime.Now;
-	string strDate = this.oWOMaster.dtK122_LimitDate.Value.ToShortDateString();
-		
-	if (strDate == "01.01.0001")
+	base.SetParam(oWOMasterP);
+	
+	string strDateLGW = this.oWOMaster.dtK122_LimitDate.Value.ToShortDateString();
+	string strDateMHD = this.oWOMaster.dtK122_Verfallsdatum.Value.ToShortDateString();
+			
+	if (strDateLGW == "01.01.0001")
 	{
-        this.edtK122_dtK122_LimitDate.PastePlainText(dDate.AddDays(a).ToString("dd.MM.yyyy"));
+        this.edtK122_dtK122_LimitDate.PastePlainText(System.DateTime.Now.AddDays(this.oWOMaster.oK122_Article.shtK122_Lagergrenzwert.Value).ToString("dd.MM.yyyy"));
+	}
+	if (strDateMHD == "01.01.0001")
+	{
+		this.edtK122_dtK122_Verfallsdatum.PastePlainText(System.DateTime.Now.AddDays(this.oWOMaster.oK122_Article.shtDurability).ToString("dd.MM.yyyy"));
 	}
 }
