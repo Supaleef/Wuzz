@@ -1,6 +1,6 @@
 protected virtual void FE_edtK122_dtK122_LimitDate_OnEnter(FrameworkEventArgs e)
 {
-	int a = this.oWOMaster.oK122_Article.shtK122_Lagergrenzwert.Value;;
+	int a = this.oWOMaster.oK122_Article.shtK122_Lagergrenzwert.Value;
 	DateTime dDate = System.DateTime.Now;
 	string strDate = this.oWOMaster.dtK122_LimitDate.Value.ToShortDateString();
 		
